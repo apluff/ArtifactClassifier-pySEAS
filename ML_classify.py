@@ -70,9 +70,9 @@ if __name__ == '__main__':
         nargs = '+', required = False, 
         help = 'save path to a file that groups the experiment.  If used\
          on experiments that have already been characterized, this will force \
-         the re-calculation of any already processed datafile')
+         the re-calculation of any already processed data file')
     ap.add_argument('-t','--train', action='store_true',
-        help = 'train the classifier on the newest class_metric dataframe')
+        help = 'train the classifier on the newest class_metric data frame')
     ap.add_argument('-fc', '--force', action='store_true',
         help = 'force re-calculation')
     ap.add_argument('-cf', '--classifier', default = './classifier.hdf5', 
@@ -264,7 +264,7 @@ if __name__ == '__main__':
         classConfidence.loc[X_test.index, 'gnb_prob'] = gnb_clf.predict_proba(X_test)[:,1]
         classConfidence.loc[X_train.index, 'gnb_prob'] = gnb_clf.predict_proba(X_train)[:,1]
 
-        # Support Vector Machine Gaussian Kernal
+        #Support Vector Machine Gaussian Kernal
         svm_clf = SVC(kernel="rbf", gamma=0.7, C=8, probability= True, degree=.01)
         
         svm_clf.fit(X_train, y_train)
@@ -338,7 +338,7 @@ if __name__ == '__main__':
             from sklearn.metrics import roc_curve
             
             classConfidence = 2*(classConfidence - 0.5)
-            # classConfidence.to_csv(classifier [:-5] + '_confidence.csv')
+
             start_exp = []
             end_exp = []
             for j, i in enumerate(classConfidence.index.tolist()):
@@ -401,7 +401,6 @@ if __name__ == '__main__':
                     plt.axvspan(xmin=i, xmax =end_exp[j]+1, color='k', alpha=0.1)
                 plt.text(i, 1.05, classConfidence.index[i])
             
-            # plt.xticks(start_exp, xlabel)
             leg = plt.legend(title = 'Types of Classifier', bbox_to_anchor=(1.01, 1), loc=2, borderaxespad=0.)
             leg.get_frame().set_linewidth(0.0)
             plt.xlabel('Num of Domains')

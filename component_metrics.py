@@ -458,13 +458,13 @@ if __name__ == '__main__':
         nargs = '+', required = False, 
         help = 'save path to a file that groups the experiment.  If used\
          on experiments that have already been characterized, this will force \
-         the re-calculation of any already processed datafile')
+         the re-calculation of any already processed data file')
     ap.add_argument('-pr', '--process', default = 0, required = False, type=int,
         help = 'Number of CPU dedicated to processing; 0 will \
         max out the number of CPU')
     ap.add_argument('-uc', '--updateClass', default = None,
         nargs = '+', required = False, 
-        help = 'directory to ica.hdf5, put the tsv path into the input arguemnt,\
+        help = 'directory to ica.hdf5, put the tsv path into the input argument,\
         updates the tsv based on ica.hdf5 classification')
     ap.add_argument('-fc', '--force', action='store_true',
         help = 'force re-calculation if not grouped')
@@ -543,7 +543,7 @@ if __name__ == '__main__':
                     data['artifact'] = artifact[notnoise_index]
                     data['neural'] = neural[notnoise_index]
                     print('\nSum of each component AFTER update:\n', data[['artifact','neural']].sum())
-                    print('Saving dataframe to:', savepath)
+                    print('Saving data frame to:', savepath)
                     data.to_csv(savepath, sep = '\t')
                     update = True
 
@@ -551,8 +551,8 @@ if __name__ == '__main__':
                     if args['force']:
                         print('Re-calculating the metrics.')
                     if args['updateClass']:
-                        print('Unable to update experimental dataframe. Either no artifact components or no metrics.tsv found')
-                        print('Continuing on to create dataframe')
+                        print('Unable to update experimental data frame. Either no artifact components or no metrics.tsv found')
+                        print('Continuing on to create data frame')
                     
                     flipped = f.load('flipped')
                     print('Loading eig_mix for tcourse metrics')
@@ -591,7 +591,7 @@ if __name__ == '__main__':
 
                     if group:
                         if os.path.exists(savepath):
-                            print('Updating exisiting file: ', savepath)
+                            print('Updating existing file: ', savepath)
                             main_data = pd.read_csv(savepath, sep = '\t', index_col='exp_ic')
                             try:
                                 main_data.drop(columns = 'anml')
@@ -612,20 +612,20 @@ if __name__ == '__main__':
                                     j+=1
                                     main_data.loc[i, 'anml'] = j
                                     
-                            print('\nNumber of missing rows for the full dataset: {0} of {1}'.format(np.sum(np.isnan(main_data['temporal.min'])), len(main_data)))
+                            print('\nNumber of missing rows for the full data set: {0} of {1}'.format(np.sum(np.isnan(main_data['temporal.min'])), len(main_data)))
                             main_data.to_csv(savepath, sep = '\t')
                         else:
                             print('Creating NEW file: ', savepath)
                             data.to_csv(savepath, sep = '\t')
                     else:
-                        print('\nSaving dataframe to:', savepath)
+                        print('\nSaving data frame to:', savepath)
                         data.to_csv(savepath, sep = '\t')
                         update = True
 
             elif path.endswith('.tsv'):
                 try:
                     savepath = path
-                    print('Importing dataframe\n------------------------------------')
+                    print('Importing data frame\n------------------------------------')
                     data = pd.read_csv(path, sep = '\t', index_col='exp_ic')
                     neural = data['neural']
                     # try:
@@ -668,7 +668,7 @@ if __name__ == '__main__':
                 except Exception as e:
                     print('Error importing dataFrame')
                     print('\t ERROR : ', e)
-                    raise AssertionError('Could not import dataframe from csv file.')
+                    raise AssertionError('Could not import data frame from csv file.')
             
             else:
                 base = os.path.basename(path)
