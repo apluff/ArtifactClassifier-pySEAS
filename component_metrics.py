@@ -501,7 +501,7 @@ if __name__ == '__main__':
                     assert os.path.exists(save_dir)
                 group = True
             else:
-                savepath = path.replace('.hdf5', '_ica-metrics.tsv')
+                savepath = path.replace('ica-initial.hdf5', 'ica-metrics.tsv')
                 savepath = savepath.replace('_reduced', '')
                 group = False
             
@@ -509,7 +509,7 @@ if __name__ == '__main__':
 
             if path.endswith('.hdf5'):
                 assert path.endswith('ica-initial.hdf5') | path.endswith('ica-filtered.hdf5'),\
-                     "Path did not end in '_ica.hdf5'"
+                     "Path did not end in 'ica-initial.hdf5' or 'ica-filtered.hdf5'"
 
                 print('\nLoading data to create classifier metrics\n------------------------------------------------')
                 f = h5(path)
