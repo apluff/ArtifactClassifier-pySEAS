@@ -559,7 +559,8 @@ if __name__ == '__main__':
                     tcourse = f.load('eig_mix')
                     roimask = f.load('roimask')
                     eig_vec = f.load('eig_vec')
-                    thresh = f.load('thresholds')
+                    # thresh = f.load('thresholds')
+                    thresh = None
                     try:
                          meta = f.load('expmeta')
                     except Exception as e:
