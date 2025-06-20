@@ -508,7 +508,7 @@ if __name__ == '__main__':
             base = os.path.basename(path) #used in naming the indices to identify components
 
             if path.endswith('.hdf5'):
-                assert path.endswith('.hdf5') | path.endswith('.hdf5'),\
+                assert path.endswith('ica-initial.hdf5') | path.endswith('ica-filtered.hdf5'),\
                      "Path did not end in '_ica.hdf5'"
 
                 print('\nLoading data to create classifier metrics\n------------------------------------------------')
