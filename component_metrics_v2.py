@@ -632,7 +632,7 @@ if __name__ == '__main__':
                     del eig_vec
 
                     data = batchClassify(base, data, eigenbrains, tcourse, roimask, thresh, 
-                                              notnoise_index, fps = args['fps'], processes = args['process'])
+                                              notnoise_index, fps = 7.5, processes = args['process'])
 
                     if group:
                         if os.path.exists(savepath):
