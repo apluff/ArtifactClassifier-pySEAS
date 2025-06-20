@@ -9,7 +9,7 @@ Date: 2019-04-06
 import os 
 import re
 import sys
-sys.path.append('/home/feldheimlab/Documents/pySEAS/') # dir of cloned repo
+sys.path.append('/home/s4296607/Software/pySEAS/') # dir of cloned repo
 
 # key data management/manipulation packages
 import numpy as np
@@ -501,15 +501,15 @@ if __name__ == '__main__':
                     assert os.path.exists(save_dir)
                 group = True
             else:
-                savepath = path.replace('.hdf5', '_metrics.tsv')
+                savepath = path.replace('ica-initial.hdf5', 'ica-metrics.tsv')
                 savepath = savepath.replace('_reduced', '')
                 group = False
             
             base = os.path.basename(path) #used in naming the indices to identify components
 
             if path.endswith('.hdf5'):
-                assert path.endswith('_ica.hdf5') | path.endswith('_ica_reduced.hdf5'),\
-                     "Path did not end in '_ica.hdf5'"
+                assert path.endswith('ica-initial.hdf5') | path.endswith('ica-filtered.hdf5'),\
+                     "Path did not end in 'ica-initial.hdf5' or 'ica-filtered.hdf5'"
 
                 print('\nLoading data to create classifier metrics\n------------------------------------------------')
                 f = h5(path)
@@ -559,7 +559,8 @@ if __name__ == '__main__':
                     tcourse = f.load('eig_mix')
                     roimask = f.load('roimask')
                     eig_vec = f.load('eig_vec')
-                    thresh = f.load('thresholds')
+                    # thresh = f.load('thresholds')
+                    thresh = None
                     try:
                          meta = f.load('expmeta')
                     except Exception as e:
