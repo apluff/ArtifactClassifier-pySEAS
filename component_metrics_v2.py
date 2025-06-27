@@ -501,7 +501,7 @@ if __name__ == '__main__':
                     assert os.path.exists(save_dir)
                 group = True
             else:
-                savepath = path.replace('ica-filtered.hdf5', 'ica-metrics.tsv')
+                savepath = path.replace('ica-pyseas.hdf5', 'ica-metrics.tsv')
                 savepath = savepath.replace('_reduced', '')
                 group = False
             
