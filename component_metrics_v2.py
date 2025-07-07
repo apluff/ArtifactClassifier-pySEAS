@@ -501,14 +501,14 @@ if __name__ == '__main__':
                     assert os.path.exists(save_dir)
                 group = True
             else:
-                savepath = path.replace('ica-pyseas.hdf5', 'ica-metrics.tsv')
+                savepath = path.replace('ica-filtered.hdf5', 'ica-metrics.tsv')
                 savepath = savepath.replace('_reduced', '')
                 group = False
             
             base = os.path.basename(path) #used in naming the indices to identify components
 
             if path.endswith('.hdf5'):
-                assert path.endswith('ica-pyseas.hdf5'),\
+                assert path.endswith('ica-initial.hdf5') | path.endswith('ica-filtered.hdf5'),\
                      "Path did not end in NeuroBlueprint file suffix."
 
                 print('\nLoading data to create classifier metrics\n------------------------------------------------')
